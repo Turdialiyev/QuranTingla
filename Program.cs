@@ -20,4 +20,6 @@ builder.Services.AddScoped<QuranService>();
 
 var app = builder.Build(); 
 
+var s="added value";
+
 app.Run();
