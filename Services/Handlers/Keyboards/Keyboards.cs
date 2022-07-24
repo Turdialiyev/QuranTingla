@@ -37,7 +37,6 @@ public partial class BotUpdateHandler
         },
     });
 
-
     InlineKeyboardMarkup books = new(new[]
     {
         new []
