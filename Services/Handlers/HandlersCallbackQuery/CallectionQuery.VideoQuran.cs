@@ -1,7 +1,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using SurahSender.Services.MarcupHelper;
-using SurahSender.Services.Handler;
+using SurahSender.Services.Handler.AddedFunction;
 
 
 namespace SurahSender.Services;

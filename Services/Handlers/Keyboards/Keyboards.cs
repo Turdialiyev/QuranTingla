@@ -17,7 +17,7 @@ public partial class BotUpdateHandler
         new []
         {
             InlineKeyboardButton.WithCallbackData(text: "📖 Qur'on matni", callbackData: "_textQuran"),
-            InlineKeyboardButton.WithCallbackData(text: "🔤  Arab Alifbosi", callbackData: "dars1_video_10"),
+            InlineKeyboardButton.WithCallbackData(text: "🔤  Arab Alifbosi", callbackData: "dars_video1_10"),
         },
 
     });

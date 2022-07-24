@@ -1,4 +1,5 @@
-namespace SurahSender.Services.Handler;
+
+namespace SurahSender.Services.Handler.AddedFunction;
 
 public static class ButtonOfData
 {
@@ -7,9 +8,9 @@ public static class ButtonOfData
         var result = collectionOfData.Count();
         var text = "";
         var dictionary = new Dictionary<string, string>();
-        var revers1 = Reverse(buttonOfQuery);
+        var revers1 = ReversString.Reverse(buttonOfQuery);
         var index1 = revers1.IndexOf("_");
-        var revers2 = Reverse(revers1.Substring(0, index1));
+        var revers2 = ReversString.Reverse(revers1.Substring(0, index1));
         var prceed = int.Parse(revers2);
         int increaseOfData = 0;
         int ikonsOfData = 0;
@@ -112,34 +113,5 @@ public static class ButtonOfData
         return Tuple.Create(result, increaseOfData, text, dictionary, row);
 
     }
-
-    //Revers
-    public static string Reverse(string Input)
-    {
-
-        // Converting string to character array
-        char[] charArray = Input.ToCharArray();
-
-        // Declaring an empty string
-        string reversedString = String.Empty;
-
-        int length, index;
-        length = charArray.Length - 1;
-        index = length;
-
-        // Iterating the each character from right to left 
-        while (index > -1)
-        {
-
-            // Appending character to the reversedstring.
-            reversedString = reversedString + charArray[index];
-            index--;
-        }
-
-        // Return the reversed string.
-        return reversedString;
-    }
-
-
 
 }
