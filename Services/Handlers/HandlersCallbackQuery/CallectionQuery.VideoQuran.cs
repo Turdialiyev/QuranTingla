@@ -3,7 +3,6 @@ using Telegram.Bot.Types;
 using SurahSender.Services.MarcupHelper;
 using SurahSender.Services.Handler;
 
-
 namespace SurahSender.Services;
 
 public partial class BotUpdateHandler

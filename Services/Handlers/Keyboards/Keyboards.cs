@@ -17,8 +17,9 @@ public partial class BotUpdateHandler
         new []
         {
             InlineKeyboardButton.WithCallbackData(text: "📖 Qur'on matni", callbackData: "_textQuran"),
-            InlineKeyboardButton.WithCallbackData(text: "🔤  Arab Alifbosi", callbackData: "dars1_video_10"),
+            InlineKeyboardButton.WithCallbackData(text: "🔤  Arab Alifbosi", callbackData: "dars_video1_10"),
         },
+
     });
 
     InlineKeyboardMarkup reciters = new(new[]
@@ -35,7 +36,6 @@ public partial class BotUpdateHandler
             InlineKeyboardButton.WithCallbackData(text: "👳🏻‍♂️  Ahmad bin Ali Al-Ajmi.", callbackData: "_reciters3"),
         },
     });
-
 
     InlineKeyboardMarkup books = new(new[]
     {

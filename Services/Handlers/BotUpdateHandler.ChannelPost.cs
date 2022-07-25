@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using SurahSender.Entities;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 

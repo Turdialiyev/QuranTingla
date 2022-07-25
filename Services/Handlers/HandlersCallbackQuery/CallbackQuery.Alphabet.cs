@@ -18,7 +18,7 @@ public partial class BotUpdateHandler
 
         var buttons = ButtonOfData.ButtonsOfData(collectionOfData, buttonOfQuery, keyOfButton);
         
-        if (buttonOfQuery != "dars1_video_10")
+        if (buttonOfQuery != "dars_video1_10")
         {
             await botClient.DeleteMessageAsync(
                 query.Message.Chat.Id,

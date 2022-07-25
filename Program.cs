@@ -14,12 +14,10 @@ var data = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddSingleton(p => new TelegramBotClient(token)); 
 builder.Services.AddSingleton<IUpdateHandler, BotUpdateHandler>();  
 builder.Services.AddHostedService<BotBackgroundService>();
-// builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(data));  
 builder.Services.AddSingleton<AppDbContext>(x=>new AppDbContext(data));
 builder.Services.AddScoped<QuranService>();
 
 var app = builder.Build(); 
 
-var s="added value";
 
 app.Run();

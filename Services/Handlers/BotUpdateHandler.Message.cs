@@ -22,7 +22,6 @@ public partial class BotUpdateHandler
             MessageType.Text => HandleTextMessageAsync(botClient, message, cancellationToken),
             _ => HandleUnknownMessageAsync(botClient, message, cancellationToken),
         };
-
         await handler;
     }
     private Task HandleUnknownMessageAsync(ITelegramBotClient botClient,
@@ -50,16 +49,48 @@ public partial class BotUpdateHandler
 
         await handler;
     }
-
     private async Task HandleStartAsync(ITelegramBotClient botClient,
                                         Message message,
                                         CancellationToken cancellationToken)
     {
 
-        await botClient.SendPhotoAsync(
-            message.Chat.Id,
-            photo: "https://raw.githubusercontent.com/Nuriddin321/imgs/main/Screenshot%20from%202022-07-17%2016-34-50.jpg",
-            cancellationToken: cancellationToken);
+        ArgumentNullException.ThrowIfNull(message);
+
+        using var scope = _scopeFactory.CreateScope();
+
+        _quranService = scope.ServiceProvider.GetRequiredService<QuranService>();
+        
+        var userId = message.From?.Id;
+        var firstName = message.From?.FirstName;
+        var lastName = message.From?.LastName;
+        var userName = message.From?.Username;
+
+        _logger.LogInformation("Message {id}", userId);
+
+        var result = await _quranService.AddUserAsync(new Entities.User()
+        {
+            UserId = (long)userId,
+            FirstName = firstName,
+            LastName = lastName,
+            UserNmae = userName,
+            DateTime = DateTime.Now
+        });
+
+        if (result.IsSuccess)
+        {
+            _logger.LogInformation($"New User  successfully added: {userId}");
+        }
+        else
+        {
+            _logger.LogInformation($"User not added: {userId}, Error: {result.ErrorMessage}");
+        }
+        //  await botClient.ForwardMessageAsync(
+        //     chatId: message.Chat.Id,
+        //     fromChatId:5503178972,
+        //     646,
+        //     cancellationToken: cancellationToken);
+
+        
 
         await botClient.SendTextMessageAsync(
             message.Chat.Id,

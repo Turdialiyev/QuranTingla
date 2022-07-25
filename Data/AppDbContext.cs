@@ -8,15 +8,17 @@ public class AppDbContext : DbContext
     private readonly string _connectionString;
 
     public DbSet<Quran>? Qurans { get; set; }
-    public AppDbContext(string conn)
+    public DbSet<User>? Users { get; set; }
+    public AppDbContext(string connectionString)
     {
-        _connectionString = conn;
+        _connectionString = connectionString;
 
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(_connectionString);
     }
+
     public AppDbContext(DbContextOptions<AppDbContext> options) :
     base(options)
     { }
