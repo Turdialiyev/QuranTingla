@@ -1,5 +1,6 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using SurahSender.Services.Handler.AddedFunction;
 
 namespace SurahSender.Services;
 public partial class BotUpdateHandler
@@ -19,6 +20,7 @@ public partial class BotUpdateHandler
         _logger.LogInformation("button is {queryValue}", key);
         int index = key.IndexOf("_");
         
+
         if (index >= 0)
         {
             index = index;
@@ -36,7 +38,7 @@ public partial class BotUpdateHandler
         {
             HandleAudioQuranAsync(botClient, query, cancellationToken);
         }
-        else if (key?.Length > 10 && key.Substring(0, 10) == "dars_video" || key?.Length > 10 && key.Substring(0, index) == "dars1")
+        else if (key == "dars_video1_10" || key?.Length > 10 && key.Substring(0, index) == "dars1")
         {
             HandleAlphabetAsync(botClient, query, cancellationToken);
         }
@@ -52,5 +54,5 @@ public partial class BotUpdateHandler
 
     }
 
-   
+
 }

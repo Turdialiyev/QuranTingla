@@ -12,14 +12,7 @@ public class QuranService
     {
         _context = context;
     }
-    public async Task<Quran?> GetQuranAsync(long? Id)
-    {
-        ArgumentNullException.ThrowIfNull(Id);
-
-        var quran = await _context.Qurans.FindAsync(Id);
-
-        return quran;
-    }
+    // addeing information of Qquran to data 
     public async Task<(bool IsSuccess, string? ErrorMessage)> AddDataAsync(Quran quran)
     {
         if (await Exists(quran.IdOfMessage))
@@ -37,4 +30,23 @@ public class QuranService
     }
     public async Task<bool> Exists(long idOfMessage)
         => await _context.Qurans.AnyAsync(u => u.IdOfMessage == idOfMessage);
+
+    // addeing information of user to data 
+    public async Task<(bool IsSuccess, string? ErrorMessage)> AddUserAsync(User user)
+    {
+        if (await ExistsUser(user.UserId))
+            return (false, "User already exsist");
+        try
+        {
+            var result = await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+            return (true, null);
+        }
+        catch (Exception e)
+        {
+            return (false, e.Message);
+        }
+    }
+    public async Task<bool> ExistsUser(long userId)
+        => await _context.Users.AnyAsync(u => u.UserId == userId);
 }

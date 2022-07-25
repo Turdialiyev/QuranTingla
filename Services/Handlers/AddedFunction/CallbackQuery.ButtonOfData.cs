@@ -1,5 +1,6 @@
+using SurahSender.Services.Handler.AddedFunction;
 
-namespace SurahSender.Services.Handler.AddedFunction;
+namespace SurahSender.Services.Handler;
 
 public static class ButtonOfData
 {
@@ -57,7 +58,6 @@ public static class ButtonOfData
 
         else if (collectionOfData?.Count() / 10 > 0)
         {
-            row = collectionOfData.Count() % 10;
             increaseOfData = collectionOfData?.Count() - (collectionOfData?.Count() % 10) + 10 ?? 0;
 
             for (int i = prceed - 10; i < collectionOfData?.Count(); i++)
