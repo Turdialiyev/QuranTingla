@@ -4,7 +4,7 @@ namespace SurahSender.Services.Handler;
 
 public static class ButtonOfData
 {
-    public static Tuple<int, int, string, Dictionary<string, string>, int> ButtonsOfData(List<Entities.Quran> collectionOfData, string buttonOfQuery, string keyOfButton)
+    public static Tuple<int, int, string, Dictionary<string, string>, int> ButtonsOfData(List<Entities.QuranVideo> collectionOfData, string buttonOfQuery, string keyOfButton)
     {
         var result = collectionOfData.Count();
         var text = "";
@@ -24,7 +24,7 @@ public static class ButtonOfData
             for (int i = prceed - 10; i < prceed; i++)
             {
                 ikonsOfData++;
-                var key = collectionOfData[i].IdOfMessage + "";
+                var key = collectionOfData[i].MessageId + "";
                 var value = ikonsOfData + "";
                 var name = collectionOfData[i].Name;
                 var index = name.IndexOf(' ');
@@ -63,7 +63,7 @@ public static class ButtonOfData
             for (int i = prceed - 10; i < collectionOfData?.Count(); i++)
             {
                 ikonsOfData += 1;
-                var key = collectionOfData[i].IdOfMessage + "";
+                var key = collectionOfData[i].MessageId + "";
                 var value = ikonsOfData + "";
                 var name = collectionOfData[i].Name;
                 var index = name.IndexOf(' ');
@@ -91,7 +91,7 @@ public static class ButtonOfData
 
             for (int i = prceed - 10; i < collectionOfData?.Count(); i++)
             {
-                var key = collectionOfData[i].IdOfMessage + "";
+                var key = collectionOfData[i].MessageId + "";
                 var value = (i + 1) + "";
                 var name = collectionOfData[i].Name;
                 var index = name.IndexOf(' ');

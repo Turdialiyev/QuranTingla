@@ -1,10 +1,9 @@
 namespace SurahSender.Entities;
 
-public class Quran
+public class QuranVideo
 {
     public Guid Id { get; set; }
-    public long IdOfMessage {get; set;}
+    public int MessageId {get; set;}
     public string? Name { get; set; }
-    public int Size { get; set; }
 
 }

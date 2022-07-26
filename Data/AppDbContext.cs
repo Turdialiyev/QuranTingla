@@ -7,7 +7,7 @@ public class AppDbContext : DbContext
 {
     private readonly string _connectionString;
 
-    public DbSet<Quran>? Qurans { get; set; }
+    public DbSet<QuranVideo>? QuranVideos { get; set; }
     public DbSet<User>? Users { get; set; }
     public AppDbContext(string connectionString)
     {

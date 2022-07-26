@@ -13,13 +13,13 @@ public class QuranService
         _context = context;
     }
     // addeing information of Qquran to data 
-    public async Task<(bool IsSuccess, string? ErrorMessage)> AddDataAsync(Quran quran)
+    public async Task<(bool IsSuccess, string? ErrorMessage)> AddDataAsync(QuranVideo quran)
     {
-        if (await Exists(quran.IdOfMessage))
+        if (await Exists(quran.MessageId))
             return (false, "Quran exists");
         try
         {
-            var result = await _context.Qurans.AddAsync(quran);
+            var result = await _context.QuranVideos.AddAsync(quran);
             await _context.SaveChangesAsync();
             return (true, null);
         }
@@ -28,8 +28,8 @@ public class QuranService
             return (false, e.Message);
         }
     }
-    public async Task<bool> Exists(long idOfMessage)
-        => await _context.Qurans.AnyAsync(u => u.IdOfMessage == idOfMessage);
+    public async Task<bool> Exists(long messageId)
+        => await _context.QuranVideos.AnyAsync(u => u.MessageId == messageId);
 
     // addeing information of user to data 
     public async Task<(bool IsSuccess, string? ErrorMessage)> AddUserAsync(User user)

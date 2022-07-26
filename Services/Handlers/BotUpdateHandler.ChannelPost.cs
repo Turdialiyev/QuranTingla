@@ -15,26 +15,25 @@ public partial class BotUpdateHandler
         
         _quranService = scope.ServiceProvider.GetRequiredService<QuranService>();
         
-        var idOfMessage = channelPost.MessageId;
+        var messageId = channelPost.MessageId;
         var name = channelPost.Caption;
         var size = 1;
 
-        _logger.LogInformation("Id Of message {id}", idOfMessage);
+        _logger.LogInformation("Id Of message {id}", messageId);
 
-        var result = await _quranService.AddDataAsync(new Entities.Quran()
+        var result = await _quranService.AddDataAsync(new Entities.QuranVideo()
         {
-            IdOfMessage = idOfMessage,
+            MessageId = messageId,
             Name = name,
-            Size = size
         });
 
         if (result.IsSuccess)
         {
-            _logger.LogInformation($"New Quran Video successfully added: {idOfMessage}, Name: {name}");
+            _logger.LogInformation($"New Quran Video successfully added: {messageId}, Name: {name}");
         }
         else
         {
-            _logger.LogInformation($"Quran video not added: {idOfMessage}, Error: {result.ErrorMessage}");
+            _logger.LogInformation($"Quran video not added: {messageId}, Error: {result.ErrorMessage}");
         }
     }
 }
