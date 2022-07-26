@@ -13,27 +13,34 @@ public partial class BotUpdateHandler
 
         _logger.LogInformation($"{messageId} =================> ");
 
-        var result = await _quranService.AddVideoAsync(new Entities.Quran()
+        if (name != null)
         {
+            var result = await _quranService.AddVideoAsync(new Entities.Quran()
+            {
 
-            MessageId = messageId,
-            Name = name,
-            Size = size
+                MessageId = messageId,
+                Name = name,
+                Size = size
 
-        });
+            });
 
-        if (result.IsSuccess)
-        {
+            if (result.IsSuccess)
+            {
 
-            _logger.LogInformation($"New Quran Video successfully added: {messageId}, Name: {name}");
+                _logger.LogInformation($"New Quran Video successfully added: {messageId}, Name: {name}");
 
+            }
+            else
+
+            {
+
+                _logger.LogInformation($"Quran video not added: {messageId}, Error: {result.ErrorMessage}");
+
+            }
         }
         else
-
         {
-
-            _logger.LogInformation($"Quran video not added: {messageId}, Error: {result.ErrorMessage}");
-
+            _logger.LogInformation("iltimos name bilan jonating");
         }
 
 
