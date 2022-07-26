@@ -11,13 +11,30 @@ using SurahSender.Data;
 namespace surah_sender.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220726141154_Create_QuranVideos_Table")]
-    partial class Create_QuranVideos_Table
+    [Migration("20220726153632_Create_QuranAudioes_QuranVideoes_Users_Table")]
+    partial class Create_QuranAudioes_QuranVideoes_Users_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.7");
+
+            modelBuilder.Entity("SurahSender.Entities.QuranAudio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuranAudioes");
+                });
 
             modelBuilder.Entity("SurahSender.Entities.QuranVideo", b =>
                 {
@@ -33,7 +50,7 @@ namespace surah_sender.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("QuranVideos");
+                    b.ToTable("QuranVideoes");
                 });
 
             modelBuilder.Entity("SurahSender.Entities.User", b =>

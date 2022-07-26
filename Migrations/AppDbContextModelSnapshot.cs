@@ -17,6 +17,23 @@ namespace surah_sender.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.7");
 
+            modelBuilder.Entity("SurahSender.Entities.QuranAudio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuranAudioes");
+                });
+
             modelBuilder.Entity("SurahSender.Entities.QuranVideo", b =>
                 {
                     b.Property<Guid>("Id")
@@ -31,7 +48,7 @@ namespace surah_sender.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("QuranVideos");
+                    b.ToTable("QuranVideoes");
                 });
 
             modelBuilder.Entity("SurahSender.Entities.User", b =>

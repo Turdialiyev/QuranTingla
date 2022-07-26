@@ -19,7 +19,7 @@ public class QuranService
             return (false, "Quran exists");
         try
         {
-            var result = await _context.QuranVideos.AddAsync(quran);
+            var result = await _context.QuranVideoes.AddAsync(quran);
             await _context.SaveChangesAsync();
             return (true, null);
         }
@@ -29,7 +29,7 @@ public class QuranService
         }
     }
     public async Task<bool> Exists(long messageId)
-        => await _context.QuranVideos.AnyAsync(u => u.MessageId == messageId);
+        => await _context.QuranVideoes.AnyAsync(u => u.MessageId == messageId);
 
     // addeing information of user to data 
     public async Task<(bool IsSuccess, string? ErrorMessage)> AddUserAsync(User user)
