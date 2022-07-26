@@ -20,9 +20,9 @@ public class QuranService
 
         return quran;
     }
-    public async Task<(bool IsSuccess, string? ErrorMessage)> AddDataAsync(Quran quran)
+    public async Task<(bool IsSuccess, string? ErrorMessage)> AddVideoAsync(Quran quran)
     {
-        if (await Exists(quran.IdOfMessage))
+        if (await Exists(quran.MessageId))
             return (false, "Quran exists");
         try
         {
@@ -36,5 +36,5 @@ public class QuranService
         }
     }
     public async Task<bool> Exists(long idOfMessage)
-        => await _context.Qurans.AnyAsync(u => u.IdOfMessage == idOfMessage);
+        => await _context.Qurans.AnyAsync(u => u.MessageId == idOfMessage);
 }

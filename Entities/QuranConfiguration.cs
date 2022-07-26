@@ -7,8 +7,8 @@ public class QuranConfiguration : IEntityTypeConfiguration<Quran>
 {
     public void Configure(EntityTypeBuilder<Quran> builder)
     {
-        builder.HasIndex(q => q.IdOfMessage).IsUnique();
-        builder.HasIndex(q => q.Name).IsUnique();
+        builder.HasIndex(q => q.MessageId).IsUnique();
+        builder.Property(q => q.Name).IsRequired();
         builder.Property(q => q.Size);
     }
 }

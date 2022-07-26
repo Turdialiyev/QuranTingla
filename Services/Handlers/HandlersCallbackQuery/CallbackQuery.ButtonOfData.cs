@@ -22,7 +22,7 @@ public static class ButtonOfData
             for (int i = prceed - 10; i < prceed; i++)
             {
                 ikonsOfData++;
-                var key = collectionOfData[i].IdOfMessage + "";
+                var key = collectionOfData[i].MessageId + "";
                 var value = ikonsOfData + "";
                 var name = collectionOfData[i].Name;
                 var index = name.IndexOf(' ');
@@ -62,7 +62,7 @@ public static class ButtonOfData
             for (int i = prceed - 10; i < collectionOfData?.Count(); i++)
             {
                 ikonsOfData += 1;
-                var key = collectionOfData[i].IdOfMessage + "";
+                var key = collectionOfData[i].MessageId + "";
                 var value = ikonsOfData + "";
                 var name = collectionOfData[i].Name;
                 var index = name.IndexOf(' ');
@@ -90,7 +90,7 @@ public static class ButtonOfData
 
             for (int i = prceed - 10; i < collectionOfData?.Count(); i++)
             {
-                var key = collectionOfData[i].IdOfMessage + "";
+                var key = collectionOfData[i].MessageId + "";
                 var value = (i + 1) + "";
                 var name = collectionOfData[i].Name;
                 var index = name.IndexOf(' ');
