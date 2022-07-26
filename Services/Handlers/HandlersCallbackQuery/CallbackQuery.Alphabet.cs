@@ -9,7 +9,7 @@ public partial class BotUpdateHandler
 {
  private async Task HandleAlphabetAsync(ITelegramBotClient botClient, CallbackQuery query, CancellationToken cancellationToken)
     {
-         var collectionOfData = _context.Qurans
+         var collectionOfData = _context.QuranVideoes
                             .Where(p => p.Name.Substring(p.Name.Length - 10, p.Name.Length) == "dars_video")
                             .Select(p => p).ToList();
         

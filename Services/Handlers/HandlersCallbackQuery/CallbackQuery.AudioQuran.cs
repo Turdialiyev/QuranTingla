@@ -11,7 +11,7 @@ public partial class BotUpdateHandler
                                        CallbackQuery query,
                                        CancellationToken cancellationToken)
     {
-        var collectionOfData = _context.Qurans
+        var collectionOfData = _context.QuranVideoes
                             .Where(p =>p.Name.Substring(p.Name.Length - 5, p.Name.Length) == "audio" && p.Name.Substring(p.Name.Length - 14 ,p.Name.Length ) != "darslari_audio")
                             .Select(p => p).ToList();
 

@@ -11,32 +11,46 @@ using SurahSender.Data;
 namespace surah_sender.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220725073821_Create_User_Table")]
-    partial class Create_User_Table
+    [Migration("20220726153632_Create_QuranAudioes_QuranVideoes_Users_Table")]
+    partial class Create_QuranAudioes_QuranVideoes_Users_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.7");
 
-            modelBuilder.Entity("SurahSender.Entities.Quran", b =>
+            modelBuilder.Entity("SurahSender.Entities.QuranAudio", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("IdOfMessage")
+                    b.Property<int>("MessageId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Size")
+                    b.HasKey("Id");
+
+                    b.ToTable("QuranAudioes");
+                });
+
+            modelBuilder.Entity("SurahSender.Entities.QuranVideo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MessageId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Qurans");
+                    b.ToTable("QuranVideoes");
                 });
 
             modelBuilder.Entity("SurahSender.Entities.User", b =>
