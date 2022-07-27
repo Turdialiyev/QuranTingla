@@ -11,7 +11,7 @@ public partial class BotUpdateHandler
     private async Task HandlerChannelPostAsync(ITelegramBotClient botClient, Message? channelPost, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(channelPost);
-        
+
         using var scope = _scopeFactory.CreateScope();
 
         _quranService = scope.ServiceProvider.GetRequiredService<QuranService>();
@@ -23,21 +23,15 @@ public partial class BotUpdateHandler
 
         _logger.LogInformation("id  =>  {id}", type);
 
-        if (name != string.Empty && channelId == -1001709192461)
+        var handlerCannel = type switch
         {
-           var handlerCannel = type switch
-           {
-
-            MessageType.Video => HandlerChannelPostVideoAsync(botClient, channelPost, cancellationToken, name, messageId),
+            MessageType.Text  => HandlerChannelPostTextAsync(botClient, channelPost, cancellationToken), 
+            MessageType.Video => HandlerChannelPostVideoAsync(botClient, channelPost, cancellationToken),
             MessageType.Audio => HandlerChannelPostAudioAsync(botClient, channelPost, cancellationToken),
-            _=>HandlerUnknownAsync(botClient, channelPost, cancellationToken)
-           
-           };
-        }
+            _ => HandlerUnknownAsync(botClient, channelPost, cancellationToken)
 
+        };
 
-        
     }
 
-    
 }

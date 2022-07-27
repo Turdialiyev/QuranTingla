@@ -84,14 +84,7 @@ public partial class BotUpdateHandler
         {
             _logger.LogInformation($"User not added: {userId}, Error: {result.ErrorMessage}");
         }
-        //  await botClient.ForwardMessageAsync(
-        //     chatId: message.Chat.Id,
-        //     fromChatId:5503178972,
-        //     646,
-        //     cancellationToken: cancellationToken);
-
-        
-
+         
         await botClient.SendTextMessageAsync(
             message.Chat.Id,
             text: $"🎉 \t\t\t\t\t\t\t\t\t\t {message.From?.FirstName ?? "👻"} \t\t\t\t\t\t\t\t\t\t  🎉  \n\n" +
