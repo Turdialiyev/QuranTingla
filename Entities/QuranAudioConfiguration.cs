@@ -8,6 +8,6 @@ public class QuranAudioConfiguration : IEntityTypeConfiguration<QuranAudio>
     public void Configure(EntityTypeBuilder<QuranAudio> builder)
     {
         builder.HasIndex(q => q.Name).IsUnique();
-        builder.HasIndex(q => q.MessageId).IsUnique();
+        builder.Property(q => q.MessageId);
     }
 }
