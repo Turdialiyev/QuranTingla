@@ -13,7 +13,7 @@ public class QuranService
         _context = context;
     }
     // addeing information of Qquran to data 
-    public async Task<(bool IsSuccess, string? ErrorMessage)> AddDataAsync(QuranVideo quran)
+    public async Task<(bool IsSuccess, string? ErrorMessage)> AddVideoDataAsync(QuranVideo quran)
     {
         if (await Exists(quran.MessageId))
             return (false, "Quran exists");
