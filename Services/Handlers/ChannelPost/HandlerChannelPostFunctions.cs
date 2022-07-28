@@ -29,6 +29,12 @@ public partial class BotUpdateHandler
                 caption: "<b> Kechirasiz bunday text farmatlarni qabulqila olmayman<i> start </i> buyrug'i yuborish oraqli men bilan bog'laning</b>. <i>My linke </i>: <a href=\"https://t.me/Imon_Islomdandur_bot\">Bot</a>",
                 parseMode: ParseMode.Html,
                 cancellationToken: cancellationToken);
+
+            await botClient.DeleteMessageAsync(
+                channelPost.Chat.Id,
+                channelPost.MessageId,
+                cancellationToken: cancellationToken);
+
         }
 
 
@@ -68,23 +74,79 @@ public partial class BotUpdateHandler
         else
         {
             _logger.LogInformation("iltimos kalit sozni kiriting kalit sozn ");
+
             await botClient.SendTextMessageAsync(
                      channelPost.Chat.Id,
-                     text: "❌ kalit soz qoyish shart",
+                     text: "❌ kalit soz qoyish shart surah_video yoki alifbo_video",
                      cancellationToken: cancellationToken);
+
+            await botClient.DeleteMessageAsync(
+                    channelPost.Chat.Id,
+                    channelPost.MessageId,
+                    cancellationToken: cancellationToken);
         }
 
 
     }
     private async Task HandlerChannelPostAudioAsync(ITelegramBotClient botClient, Message channelPost, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var revers = ReversString.Reverse(channelPost.Caption);
+        int index = revers.IndexOf(" ");
+        var key = revers.Substring(0, index);
+        key = ReversString.Reverse(key);
+
+        if (key == "surah_audio" || key == "siyrat_darslari_audio")
+        {
+            
+            var result = await _quranService.AddAudioDataAsync(new Entities.QuranAudio()
+            {
+                MessageId = (int)channelPost.MessageId,
+                Name = channelPost.Caption,
+
+            });
+
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation($"New Audio successfully added: {channelPost.Chat.Id}, Name: {channelPost.Caption}");
+
+                await botClient.SendTextMessageAsync(
+                    channelPost.Chat.Id,
+                    text: "✅",
+                    cancellationToken: cancellationToken);
+
+            }
+            else
+            {
+                _logger.LogInformation($"Audio not added: {channelPost.Chat.Id}, Error: {result.ErrorMessage}");
+            }
+        }
+        else
+        {
+            _logger.LogInformation("iltimos kalit sozni kiriting surah_audio yoki  ");
+
+            await botClient.SendTextMessageAsync(
+                     channelPost.Chat.Id,
+                     text: "❌ kalit soz qoyish shart surah_audio yoki siyrat_darslari_audio",
+                     cancellationToken: cancellationToken);
+
+            await botClient.DeleteMessageAsync(
+                channelPost.Chat.Id,
+                channelPost.MessageId,
+                cancellationToken: cancellationToken);
+        }
     }
     private async Task HandlerUnknownAsync(ITelegramBotClient botClient, Message channelPost, CancellationToken cancellationToken)
     {
-        await botClient.SendTextMessageAsync(
+        await botClient.SendPhotoAsync(
             channelPost.Chat.Id,
-            text: "note",
+            photo: "https://raw.githubusercontent.com/Turdialiyev/Information/main/picture/iStock-872962368-chat-bots.jpg",
+            caption: "<b> Kechirasiz bunday farmatlarni qabulqila olmayman<i> start </i> buyrug'i yuborish oraqli men bilan bog'laning qanday farmatda ma'lumot yuborishingiz kerakligini tushuntiraman</b>. <i>My linke </i>: <a href=\"https://t.me/Imon_Islomdandur_bot\">Bot</a>",
+            parseMode: ParseMode.Html,
+            cancellationToken: cancellationToken);
+
+        await botClient.DeleteMessageAsync(
+            channelPost.Chat.Id,
+            channelPost.MessageId,
             cancellationToken: cancellationToken);
     }
 
