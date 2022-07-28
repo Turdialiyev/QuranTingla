@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace surah_sender.Migrations
 {
-    public partial class Create_QuranAudioes_QuranVideoes_Users_Table : Migration
+    public partial class Create_Data_Table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

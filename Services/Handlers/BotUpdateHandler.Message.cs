@@ -84,6 +84,10 @@ public partial class BotUpdateHandler
         {
             _logger.LogInformation($"User not added: {userId}, Error: {result.ErrorMessage}");
         }
+        await botClient.SendPhotoAsync(
+            message.Chat.Id,
+            photo: "https://github.com/Turdialiyev/Information/blob/main/picture/photo_2022-07-28_18-52-50.jpg?raw=true",
+            cancellationToken: cancellationToken);
          
         await botClient.SendTextMessageAsync(
             message.Chat.Id,

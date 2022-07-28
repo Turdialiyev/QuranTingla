@@ -7,7 +7,6 @@ public class QuranVideoConfiguration : IEntityTypeConfiguration<QuranVideo>
 {
     public void Configure(EntityTypeBuilder<QuranVideo> builder)
     {
-        builder.HasIndex(q => q.Name).IsUnique();
-        builder.Property(q => q.MessageId);
+        builder.HasIndex(p => new { p.Name, p.MessageId }).IsUnique(true);
     }
 }

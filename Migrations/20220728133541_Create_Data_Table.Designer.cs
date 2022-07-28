@@ -11,8 +11,8 @@ using SurahSender.Data;
 namespace surah_sender.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220727110544_Create_QuranVideo_Table")]
-    partial class Create_QuranVideo_Table
+    [Migration("20220728133541_Create_Data_Table")]
+    partial class Create_Data_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
