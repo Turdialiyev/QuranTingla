@@ -20,6 +20,11 @@ public partial class BotUpdateHandler
             InlineKeyboardButton.WithCallbackData(text: "🔤  Arab Alifbosi", callbackData: "dars_video1_10"),
         },
 
+        new []
+        {
+            InlineKeyboardButton.WithCallbackData(text: "☎️ Admin bilan bog'lanish", callbackData: "admin"),
+        },
+
     });
 
     InlineKeyboardMarkup reciters = new(new[]
